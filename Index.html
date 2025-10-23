@@ -1,0 +1,522 @@
+portfolio-site/
+├─ index.html
+├─ about.html
+├─ skills.html
+├─ experience.html
+├─ education.html
+├─ contact.html
+└─ assets/
+   ├─ styles.css
+   └─ script.js
+	 :root{
+  --bg:#0e0f11;
+  --panel:#121416;
+  --muted:#9aa0a6;
+  --accent:#1fb6a1; /* teal accent */
+  --glass: rgba(255,255,255,0.03);
+  --card:#0f1113;
+  --radius:12px;
+  --maxw:1100px;
+  --ff: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:var(--ff);
+  background:linear-gradient(180deg,var(--bg), #070708 120%);
+  color:#e6eef2;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.45;
+}
+
+/* container */
+.container{
+  width:92%;
+  max-width:var(--maxw);
+  margin:0 auto;
+  padding:36px 0;
+}
+
+/* header / nav */
+.site-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:18px 0;
+}
+.brand{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  text-decoration:none;
+  color:inherit;
+}
+.logo{
+  width:48px;
+  height:48px;
+  border-radius:10px;
+  background:linear-gradient(135deg,var(--accent), #2aa2c9 80%);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+  color:#041014;
+  box-shadow:0 6px 18px rgba(16,22,26,0.6);
+  font-size:18px;
+}
+.nav{
+  display:flex;
+  gap:14px;
+  align-items:center;
+}
+.nav a{
+  color:var(--muted);
+  text-decoration:none;
+  padding:8px 12px;
+  border-radius:8px;
+  transition:all .18s ease;
+  font-weight:600;
+  font-size:14px;
+}
+.nav a:hover{color:#fff; background:rgba(255,255,255,0.02)}
+
+/* hero */
+.hero{
+  display:flex;
+  gap:28px;
+  align-items:center;
+  padding:34px 0;
+}
+.hero-left{
+  flex:1;
+}
+.h-title{
+  font-size:32px;
+  margin:0 0 12px 0;
+  letter-spacing:-0.5px;
+}
+.h-sub{
+  color:var(--muted);
+  margin:0 0 18px 0;
+  max-width:720px;
+}
+.hero-cta{display:flex; gap:12px; align-items:center}
+.btn{
+  padding:10px 16px;
+  border-radius:10px;
+  background:linear-gradient(90deg,var(--accent), #2aa2c9);
+  color:#041014;
+  text-decoration:none;
+  font-weight:700;
+  box-shadow:0 10px 30px rgba(17,24,27,0.55);
+}
+.btn.alt{
+  background:transparent;
+  color:var(--muted);
+  border:1px solid rgba(255,255,255,0.03);
+}
+
+/* hero card */
+.hero-card{
+  width:320px;
+  min-height:220px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius:var(--radius);
+  padding:18px;
+  box-shadow:0 6px 30px rgba(2,6,8,0.6);
+  border:1px solid rgba(255,255,255,0.03);
+}
+
+/* sections */
+.section{
+  margin:28px 0 44px 0;
+  display:block;
+}
+.section .card{
+  padding:20px;
+  background:var(--card);
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.02);
+}
+.grid{
+  display:grid;
+  gap:16px;
+}
+
+/* skills grid */
+.skills-grid{
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+}
+.skill{
+  background:var(--glass);
+  padding:12px;
+  border-radius:10px;
+  text-align:center;
+  font-weight:600;
+  color:#dff2ef;
+  border:1px solid rgba(255,255,255,0.02);
+}
+
+/* experience list */
+.timeline{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.timeline-item{
+  padding:12px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.015));
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,0.02);
+}
+.role{font-weight:700}
+.company{color:var(--muted); font-size:13px}
+
+/* footer */
+.site-footer{
+  padding:28px 0;
+  color:var(--muted);
+  font-size:13px;
+  border-top:1px solid rgba(255,255,255,0.02);
+  margin-top:30px;
+}
+
+/* contact form */
+.form-row{display:flex; gap:12px}
+.input, textarea{
+  width:100%;
+  padding:12px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,0.03);
+  background:transparent;
+  color:inherit;
+  resize:vertical;
+}
+textarea{min-height:120px}
+
+/* small screens */
+@media (max-width:880px){
+  .hero{flex-direction:column-reverse; align-items:stretch}
+  .hero-card{width:100%}
+  .h-title{font-size:26px}
+  .nav{display:none}
+}
+
+/* utility */
+.center{display:flex; align-items:center; justify-content:center}
+.small{font-size:13px; color:var(--muted)}
+// small interactions: smooth scroll for internal links and mobile nav toggle if needed
+document.addEventListener('DOMContentLoaded', () => {
+  // Smooth scroll for same-page anchors
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', (e)=>{
+      const href = a.getAttribute('href');
+      if(href.length>1){
+        e.preventDefault();
+        const el = document.querySelector(href);
+        if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+      }
+    });
+  });
+});
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About — Gafar Hassan</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="container site-header">
+    <a class="brand" href="index.html">
+      <div class="logo">GH</div>
+      <div>
+        <div style="font-weight:800">Gafar Hassan</div>
+        <div class="small">IT • Graphic Design • Customer Service</div>
+      </div>
+    </a>
+
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="skills.html">Skills</a>
+      <a href="experience.html">Experience</a>
+      <a href="education.html">Education</a>
+      <a href="contact.html" class="btn alt">Contact</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="section">
+      <div class="card">
+        <h2>About Me</h2>
+        <p>I’m Gafar Hassan — an IT Specialist, Graphic Designer and Customer Service professional with a proven track record across Sudan and the UAE. I combine technical knowledge in information systems with a strong visual design sense to deliver practical solutions and polished creative work. I’m passionate about solving user problems, improving client experiences, and producing designs that communicate clearly and professionally.</p>
+        <p class="small">Based in UAE • Available for remote and on-site work</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card">
+        <h3>Quick Facts</h3>
+        <ul style="margin:12px 0 0 18px;color:var(--muted)">
+          <li>Languages: English & Arabic</li>
+          <li>Availability: Freelance / Full-time</li>
+          <li>Tools: Adobe CC, Windows, Linux, MS Office</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container site-footer">
+    <div class="small">© Gafar Hassan • <a href="index.html">Home</a></div>
+  </footer>
+  <script src="assets/script.js"></script>
+</body>
+</html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Skills — Gafar Hassan</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="container site-header">
+    <a class="brand" href="index.html">
+      <div class="logo">GH</div>
+      <div>
+        <div style="font-weight:800">Gafar Hassan</div>
+        <div class="small">IT • Graphic Design • Customer Service</div>
+      </div>
+    </a>
+
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="skills.html">Skills</a>
+      <a href="experience.html">Experience</a>
+      <a href="education.html">Education</a>
+      <a href="contact.html" class="btn alt">Contact</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="section">
+      <div class="card">
+        <h2>Skills</h2>
+        <div class="grid skills-grid" style="margin-top:14px">
+          <div class="skill">Network Administration</div>
+          <div class="skill">System Troubleshooting</div>
+          <div class="skill">HTML & CSS</div>
+          <div class="skill">Adobe Photoshop</div>
+          <div class="skill">Illustrator & Branding</div>
+          <div class="skill">Customer Support</div>
+          <div class="skill">Microsoft Office</div>
+          <div class="skill">Problem Solving</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container site-footer">
+    <div class="small">© Gafar Hassan</div>
+  </footer>
+  <script src="assets/script.js"></script>
+</body>
+</html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Experience — Gafar Hassan</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="container site-header">
+    <a class="brand" href="index.html">
+      <div class="logo">GH</div>
+      <div>
+        <div style="font-weight:800">Gafar Hassan</div>
+        <div class="small">IT • Graphic Design • Customer Service</div>
+      </div>
+    </a>
+
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="skills.html">Skills</a>
+      <a href="experience.html">Experience</a>
+      <a href="education.html">Education</a>
+      <a href="contact.html" class="btn alt">Contact</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="section">
+      <div class="card">
+        <h2>Professional Experience</h2>
+
+        <div class="timeline" style="margin-top:12px">
+          <div class="timeline-item">
+            <div class="role">Customer Service Specialist</div>
+            <div class="company">Sudani / Sudatel Group — Sudan</div>
+            <div class="small" style="margin-top:8px;color:var(--muted)">Handled customer queries and supported daily operations. Strong track record of delivering high-quality client support.</div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="role">IT & Graphic Designer</div>
+            <div class="company">Wafra Travel — UAE</div>
+            <div class="small" style="margin-top:8px;color:var(--muted)">Provided IT support and created marketing designs and assets for travel campaigns and social channels.</div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="role">IT & Graphic Designer</div>
+            <div class="company">F M O — UAE</div>
+            <div class="small" style="margin-top:8px;color:var(--muted)">Maintained internal systems and produced graphics for corporate communications and client materials.</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="container site-footer">
+    <div class="small">© Gafar Hassan</div>
+  </footer>
+  <script src="assets/script.js"></script>
+</body>
+</html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Education — Gafar Hassan</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="container site-header">
+    <a class="brand" href="index.html">
+      <div class="logo">GH</div>
+      <div>
+        <div style="font-weight:800">Gafar Hassan</div>
+        <div class="small">IT • Graphic Design • Customer Service</div>
+      </div>
+    </a>
+
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="skills.html">Skills</a>
+      <a href="experience.html">Experience</a>
+      <a href="education.html">Education</a>
+      <a href="contact.html" class="btn alt">Contact</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="section">
+      <div class="card">
+        <h2>Education</h2>
+        <div style="margin-top:12px">
+          <div style="font-weight:700">Bachelor in Information Technology</div>
+          <div class="small" style="color:var(--muted)">Nahda College — Sudan</div>
+        </div>
+
+        <div style="margin-top:18px">
+          <h3>Additional Training</h3>
+          <ul style="margin:8px 0 0 18px;color:var(--muted)">
+            <li>Diploma / Courses in Customs Clearance & Logistics (if applicable)</li>
+            <li>Short courses: Graphic Design tools & Office Productivity</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="container site-footer">
+    <div class="small">© Gafar Hassan</div>
+  </footer>
+  <script src="assets/script.js"></script>
+</body>
+</html>
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact — Gafar Hassan</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="container site-header">
+    <a class="brand" href="index.html">
+      <div class="logo">GH</div>
+      <div>
+        <div style="font-weight:800">Gafar Hassan</div>
+        <div class="small">IT • Graphic Design • Customer Service</div>
+      </div>
+    </a>
+
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="skills.html">Skills</a>
+      <a href="experience.html">Experience</a>
+      <a href="education.html">Education</a>
+      <a href="contact.html" class="btn alt">Contact</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="section">
+      <div class="card">
+        <h2>Contact Me</h2>
+        <p class="small" style="color:var(--muted)">For work inquiries, collaborations or freelance projects — reach out using the details below or send a message using the form.</p>
+
+        <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:14px">
+          <div style="flex:1;min-width:260px">
+            <div style="margin-bottom:10px"><strong>Email</strong></div>
+            <div class="small"><a href="mailto:gafarhassan9@hotmail.com" style="color:inherit">gafarhassan9@hotmail.com</a></div>
+
+            <div style="margin:14px 0 10px 0"><strong>Phone</strong></div>
+            <div class="small"><a href="tel:+971544916180" style="color:inherit">+971 54 491 6180</a></div>
+
+            <div style="margin:14px 0 10px 0"><strong>Location</strong></div>
+            <div class="small">UAE (available for remote)</div>
+          </div>
+
+          <div style="flex:1;min-width:300px">
+            <!-- Simple mailto form fallback -->
+            <form action="mailto:gafarhassan9@hotmail.com" method="post" enctype="text/plain">
+              <div style="margin-bottom:8px"><input class="input" type="text" name="Name" placeholder="Your name" required></div>
+              <div style="margin-bottom:8px"><input class="input" type="email" name="Email" placeholder="Your email" required></div>
+              <div style="margin-bottom:8px"><textarea name="Message" placeholder="Message" required></textarea></div>
+              <div style="display:flex;gap:8px">
+                <button class="btn" type="submit">Send Message</button>
+                <button class="btn alt" type="reset">Reset</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="container site-footer">
+    <div class="small">© Gafar Hassan • <a href="index.html">Home</a></div>
+  </footer>
+
+  <script src="assets/script.js"></script>
+</body>
+</html>
